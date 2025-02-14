@@ -17,12 +17,14 @@ export async function onRequest(context) {
     const result = await parser.parseStringPromise(xmlData);
 
     const articles = result.rss.channel.item.map((entry) => {
+      const id = entry.guid["_"].split(":").pop();
+      
       return {
-        id: entry.guid["_"],
+        id,
         published: new Date(entry.pubDate).toISOString(),
         link: entry.link,
-        title: entry.title,
-        summary: entry.description,
+        title_en: entry.title,
+        summary_en: entry.description,
         authors: entry["dc:creator"],
       };
     });
