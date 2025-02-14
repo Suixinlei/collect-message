@@ -17,7 +17,6 @@ export async function onRequest(context) {
     const result = await parser.parseStringPromise(xmlData);
 
     const articles = result.rss.channel.item.map((entry) => {
-      console.log(entry);
       return {
         id: entry.guid["_"],
         published: new Date(entry.pubDate).toISOString(),
