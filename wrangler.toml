@@ -1,0 +1,6 @@
+name = "collect-message"
+compatibility_date = "2025-02-13"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm install && npm run build"
